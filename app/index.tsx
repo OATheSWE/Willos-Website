@@ -30,15 +30,22 @@ const App: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "https://script.google.com/macros/s/AKfycbwDTLWBY_1I9lRs6XrrSwbpRS8VjtjCTiHRoB5-K_InAADQTxczyjYeybIAMrOkhojr/exec",
-        { email }
+        "php/email.php",
+        {
+          email: email,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
       );
 
-      if (response.status === 200) {
-        setMessage("Email successfully added to the waiting list!");
+      if (response.data.status) {
+        setMessage(response.data.message);
         setEmail(""); // Clear input after successful submission
       } else {
-        setMessage("Something went wrong. Please try again.");
+        setMessage(response.data.message);
       }
     } catch (error) {
       console.error("Error submitting email:", error);
