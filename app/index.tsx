@@ -54,7 +54,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col ${styles.body} bg-primary`}>
+    <div
+      className={`min-h-screen flex flex-col ${styles.body} bg-primary overflow-y-scroll`}
+    >
       {/* Navbar */}
       <nav className="w-full py-4 flex items-center justify-center">
         <Image
@@ -174,6 +176,10 @@ const App: React.FC = () => {
             </a>
           </Group>
         </Container>
+
+        <Text className="text-sm text-center mt-6 text-gray-500">
+          Locate us: <br/>OBH Ugbomro Primary School Effuru, Warri Delta state
+        </Text>
       </footer>
     </div>
   );
